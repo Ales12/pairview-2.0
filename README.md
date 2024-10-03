@@ -7,7 +7,7 @@ misc.php?action=pairview
 # datenbank
 pairview
 
-#templates
+# templates
 - pairview 	
 - pairview_add 	
 - pairview_cat 	
