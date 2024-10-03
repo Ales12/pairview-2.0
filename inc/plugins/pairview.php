@@ -742,7 +742,7 @@ function pairview_misc()
                     $pic1 = $lovers['pic1'];
                     $pic2 = $lovers['pic2'];
                 }
-                if ($mybb->user['uid'] == $lover1_uid or $mybb->user['uid'] == $lover2_uid) {
+                if ($mybb->user['uid'] == $lover1_uid or $mybb->user['uid'] == $lover2_uid or $mybb->usergroup['canmodcp'] == 1) {
                     if ($picorpf == 0) {
                         $pic_desc = $lang->sprintf($lang->pairview_add_pic, $picsize);
                         eval ("\$pic_input = \"" . $templates->get("pairview_pic_input") . "\";");
