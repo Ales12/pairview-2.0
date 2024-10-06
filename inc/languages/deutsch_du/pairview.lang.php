@@ -11,6 +11,7 @@ $l['pairview_add_submit'] = "Pärchen hinzufügen";
 $l['pairview_delete'] = "Löschen";
 $l['pairview_edit'] = "Editieren";
 $l['pairview_edit_submit'] = "Pärchen ändern";
+$l['pairview_wiw'] = "<a href='misc.php?action=pairview'>Sieht sich die Pärchenübersicht an.</a>";
 
 // Alerts
 $l['pairview_alert_add'] = "{1} hat <b>{2} & {3}</b> unter <b>{4}</b> in die Pärchenübersicht eingetragen.";
