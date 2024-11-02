@@ -60,6 +60,7 @@ function pairview_install()
         'isdefault' => 0
     );
 
+
     $gid = $db->insert_query("settinggroups", $setting_group);
 
     $setting_array = array(               // A yes/no boolean box
@@ -136,7 +137,7 @@ function pairview_install()
         'dateline' => TIME_NOW
     );
     $db->insert_query("templates", $insert_array);
- 
+
     $insert_array = array(
         'title' => 'pairview_add',
         'template' => $db->escape_string('<html>
@@ -284,22 +285,22 @@ if(use_xmlhttprequest == "1")
         'dateline' => TIME_NOW
     );
     $db->insert_query("templates", $insert_array);
-     
- $insert_array = array(
-    'title' => 'pairview_cat',
-    'template' => $db->escape_string('<div class="pairview_cat"><strong>{$cat}</strong></div>
+
+    $insert_array = array(
+        'title' => 'pairview_cat',
+        'template' => $db->escape_string('<div class="pairview_cat"><strong>{$cat}</strong></div>
 <div class="pairview_pairs">
 	{$pairview_pairs}
 </div>'),
-    'sid' => '-1',
-    'version' => '',
-    'dateline' => TIME_NOW
-);
-$db->insert_query("templates", $insert_array);
- 
-$insert_array = array(
-    'title' => 'pairview_menu',
-    'template' => $db->escape_string('<tr>
+        'sid' => '-1',
+        'version' => '',
+        'dateline' => TIME_NOW
+    );
+    $db->insert_query("templates", $insert_array);
+
+    $insert_array = array(
+        'title' => 'pairview_menu',
+        'template' => $db->escape_string('<tr>
 	<td class="trow2">
 		<div class="pairview_flex">
 			<div>
@@ -311,15 +312,15 @@ $insert_array = array(
 		</div>
 	</td>
 </tr>'),
-    'sid' => '-1',
-    'version' => '',
-    'dateline' => TIME_NOW
-);
-$db->insert_query("templates", $insert_array);
- 
-$insert_array = array(
-    'title' => 'pairview_options',
-    'template' => $db->escape_string('<div class="pairview_options">
+        'sid' => '-1',
+        'version' => '',
+        'dateline' => TIME_NOW
+    );
+    $db->insert_query("templates", $insert_array);
+
+    $insert_array = array(
+        'title' => 'pairview_options',
+        'template' => $db->escape_string('<div class="pairview_options">
 	<a href="misc.php?action=pairview&delete_pair={$pvid}">{$lang->pairview_delete}</a>
 <a onclick="$(\'#pv_{$pvid}\').modal({ fadeDuration: 250, keepelement: true, zIndex: (typeof modal_zindex !== \'undefined\' ? modal_zindex : 9999) }); return false;" style="cursor: pointer;" class="postbit_quote postbit_mirage">	
 {$lang->pairview_edit}</a>	
@@ -456,15 +457,15 @@ if(use_xmlhttprequest == "1")
 }
 // -->
 </script>'),
-    'sid' => '-1',
-    'version' => '',
-    'dateline' => TIME_NOW
-);
-$db->insert_query("templates", $insert_array);
- 
-$insert_array = array(
-    'title' => 'pairview_pic_input',
-    'template' => $db->escape_string('<tr>
+        'sid' => '-1',
+        'version' => '',
+        'dateline' => TIME_NOW
+    );
+    $db->insert_query("templates", $insert_array);
+
+    $insert_array = array(
+        'title' => 'pairview_pic_input',
+        'template' => $db->escape_string('<tr>
 	<td class="trow1" align="center">
 		<input type="text" name="pic1" id="pic1" placeholder="https://" class="textbox" value="{$pic1}"/>
 		<div class="smalltext">{$pic_desc}</div>
@@ -474,18 +475,18 @@ $insert_array = array(
 			<div class="smalltext">{$pic_desc}</div>
 	</td>
 </tr>'),
-    'sid' => '-1',
-    'version' => '',
-    'dateline' => TIME_NOW
-);
-$db->insert_query("templates", $insert_array);
+        'sid' => '-1',
+        'version' => '',
+        'dateline' => TIME_NOW
+    );
+    $db->insert_query("templates", $insert_array);
 
-//CSS einfügen
-$css = array(
-    'name' => 'pairview.css',
-    'tid' => 1,
-    'attachedto' => '',
-    "stylesheet" => '.pairview_flex {
+    //CSS einfügen
+    $css = array(
+        'name' => 'pairview.css',
+        'tid' => 1,
+        'attachedto' => '',
+        "stylesheet" => '.pairview_flex {
 	display: flex;
 	justify-content: center;
 }
@@ -565,19 +566,19 @@ $css = array(
 	text-align: center;
 }
 ',
-    'cachefile' => $db->escape_string(str_replace('/', '', 'pairview.css')),
-    'lastmodified' => time()
-);
+        'cachefile' => $db->escape_string(str_replace('/', '', 'pairview.css')),
+        'lastmodified' => time()
+    );
 
-require_once MYBB_ADMIN_DIR . "inc/functions_themes.php";
+    require_once MYBB_ADMIN_DIR . "inc/functions_themes.php";
 
-$sid = $db->insert_query("themestylesheets", $css);
-$db->update_query("themestylesheets", array("cachefile" => "css.php?stylesheet=" . $sid), "sid = '" . $sid . "'", 1);
+    $sid = $db->insert_query("themestylesheets", $css);
+    $db->update_query("themestylesheets", array("cachefile" => "css.php?stylesheet=" . $sid), "sid = '" . $sid . "'", 1);
 
-$tids = $db->simple_select("themes", "tid");
-while ($theme = $db->fetch_array($tids)) {
-    update_theme_stylesheet_list($theme['tid']);
-}
+    $tids = $db->simple_select("themes", "tid");
+    while ($theme = $db->fetch_array($tids)) {
+        update_theme_stylesheet_list($theme['tid']);
+    }
 
 
 
@@ -605,15 +606,15 @@ function pairview_uninstall()
     $db->delete_query('settings', "name IN ('pairview_kind','pairview_picpf','pairview_picsize', 'pairview_guest')");
     $db->delete_query('settinggroups', "name = 'pairview'");
 
-    
-	require_once MYBB_ADMIN_DIR . "inc/functions_themes.php";
-	$db->delete_query("themestylesheets", "name = 'pairview.css'");
-	$query = $db->simple_select("themes", "tid");
-	while ($theme = $db->fetch_array($query)) {
-		update_theme_stylesheet_list($theme['tid']);
-	}
 
-	$db->delete_query("templates", "title LIKE '%pairview%'");
+    require_once MYBB_ADMIN_DIR . "inc/functions_themes.php";
+    $db->delete_query("themestylesheets", "name = 'pairview.css'");
+    $query = $db->simple_select("themes", "tid");
+    while ($theme = $db->fetch_array($query)) {
+        update_theme_stylesheet_list($theme['tid']);
+    }
+
+    $db->delete_query("templates", "title LIKE '%pairview%'");
     // Don't forget this
     rebuild_settings();
 }
@@ -674,7 +675,9 @@ function pairview_settings_change()
 
     $result = $db->simple_select('settinggroups', 'gid', "name='pairview'", array("limit" => 1));
     $group = $db->fetch_array($result);
-    $pairview_settings_peeker = ($mybb->input['gid'] == $group['gid']) && ($mybb->request_method != 'post');
+    if (isset($mybb->input['gid'])) {
+        $pairview_settings_peeker = ($mybb->input['gid'] == $group['gid']) && ($mybb->request_method != 'post');
+    }
 }
 function pairview_settings_peek(&$peekers)
 {
@@ -867,7 +870,7 @@ function pairview_misc()
             $option_cat .= "<option value='{$cat}'>{$cat}</option>";
         }
         if ($picorpf == 0) {
-            $pic1= "";
+            $pic1 = "";
             $pic2 = "";
             $pic_desc = $lang->sprintf($lang->pairview_add_pic, $picsize);
             eval ("\$pic_input = \"" . $templates->get("pairview_pic_input") . "\";");
