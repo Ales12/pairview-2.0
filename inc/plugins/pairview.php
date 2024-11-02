@@ -691,7 +691,7 @@ function pairview_settings_peek(&$peekers)
 // In the body of your plugin
 function pairview_misc()
 {
-    global $mybb, $templates, $lang, $header, $headerinclude, $footer, $lang, $menu, $pairview_cat, $option_cat, $db, $pairview_pairs, $options, $pic_input;
+    global $mybb, $templates, $lang, $header, $headerinclude, $footer, $lang, $menu, $pairview_cat, $option_cat, $db, $pairview_pairs, $options, $pic_input, $theme;
     $lang->load('pairview');
 
     // Einstellungen
@@ -867,10 +867,14 @@ function pairview_misc()
             $option_cat .= "<option value='{$cat}'>{$cat}</option>";
         }
         if ($picorpf == 0) {
+            $pic1= "";
+            $pic2 = "";
             $pic_desc = $lang->sprintf($lang->pairview_add_pic, $picsize);
             eval ("\$pic_input = \"" . $templates->get("pairview_pic_input") . "\";");
         }
 
+        $lover1 = "";
+        $lover2 = "";
         if (isset($_POST['add_pair'])) {
             $kind = $db->escape_string($_POST['kind']);
             $lover1 = $_POST['lover1'];
