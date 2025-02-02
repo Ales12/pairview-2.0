@@ -298,6 +298,28 @@ if(use_xmlhttprequest == "1")
     );
     $db->insert_query("templates", $insert_array);
 
+$insert_array = array(
+    'title' => 'pairview_pairs',
+    'template' => $db->escape_string('<div class="pairview_pair">
+    <div class="pairview_lovers_pic">
+        <img src="{$pic1}">
+    </div>
+    <div class="pairview_lovers">
+        <div class="lovername">{$lover1_username}</div>
+                <div class="lovername">{$lover2_username}</div>
+        <div class="pairview_and">&amp;</div>
+    </div>
+        <div class="pairview_lovers_pic">
+        <img src="{$pic2}">
+    </div>
+{$options}
+</div>'),
+    'sid' => '-1',
+    'version' => '',
+    'dateline' => TIME_NOW
+);
+$db->insert_query("templates", $insert_array);
+	
     $insert_array = array(
         'title' => 'pairview_menu',
         'template' => $db->escape_string('<tr>
